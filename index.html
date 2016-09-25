@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>jQuery Forms</title>
+    <script src="jquery-3.1.1.min.js"></script>
+    <script src="app.js"></script>
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <section>
+    <h1>Employee Records</h1>
+    <form id="employeeInfo">
+      <h2>Submission Form</h2>
+      <label for="employeeFirstName">First Name:</label>
+      <input type="text" id="employeeFirstName" name="employeeFirstName" />
+
+      <label for="employeeLastName">Last Name:</label>
+      <input type="text" id="employeeLastName" name="employeeLastName" />
+
+      <label for="employeeIdNumber">ID Number:</label>
+      <input type="text" id="employeeIdNumber" name="employeeIdNumber" />
+
+      <label for="employeeJobTitle">Job Title:</label>
+      <input type="text" id="employeeJobTitle" name="employeeJobTitle" />
+
+      <label for="employeeAnnualSalary">Annual Salary:</label>
+      <input type="text" id="employeeAnnualSalary" name="employeeAnnualSalary" />
+
+      <button type="submit">Submit</button>
+    </form>
+    <div id="employeeData">
+      <h2>Employee List</h2>
+      <table class="table" style="width:100%">
+          <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>ID</th>
+          <th>Job Title</th>
+          <th>Annual Salary</th>
+        </tr>
+      </table>
+    </div>
+    <div id="monthSal">
+      <h2>Monthly Salary Expenditures:</h2>
+      <p id="monthlyExpend">0</p>
+      </div>
+    </section>
+  </body>
+</html>
