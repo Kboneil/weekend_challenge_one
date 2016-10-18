@@ -27,7 +27,7 @@ app.controller('BasicController', function (){
     var total = 0;
     //loops through employee array and adds the monthly salaries together
     for (var i = 0; i<self.employees.length; i++){
-      monthly = Math.round(self.employees[i].annualSalary/12);
+      monthly = Number(self.employees[i].annualSalary/12);
       total += monthly;
     }
     //updates the monthly expenditures

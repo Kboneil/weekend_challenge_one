@@ -45,14 +45,14 @@
             <td>{{employee.lastName}}</td>
             <td>{{employee.idNumber}}</td>
             <td>{{employee.jobTitle}}</td>
-            <td data-salary="employee.annualSalary">{{employee.annualSalary}}</td>
+            <td data-salary="employee.annualSalary">{{employee.annualSalary | currency}}</td>
             <td><button type="button" class="btnDelete" ng-click="basic.deleteEmployee(employee)">Delete</button></td>
           </tr>
         </table>
       </div>
       <div id="monthSal">
         <h2>Monthly Salary Expenditures:</h2>
-        <p id="monthlyExpend">$ {{basic.monthlyExpend}}</p>
+        <p id="monthlyExpend">{{basic.monthlyExpend | currency}}</p>
         </div>
       </section>
     </main>
