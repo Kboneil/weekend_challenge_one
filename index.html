@@ -5,47 +5,56 @@
     <title>jQuery Forms</title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
     <script src="app.js"></script>
-
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <section>
-    <h1>Employee Records</h1>
-    <form id="employeeInfo">
-      <h2>Submission Form</h2>
-      <label for="employeeFirstName">First Name:</label>
-      <input type="text" id="employeeFirstName" name="employeeFirstName" />
+    <main ng-app="basicApp">
+      <section ng-controller="BasicController as basic">
+      <h1>Employee Records</h1>
+      <form id="employeeInfo">
+        <h2>Submission Form</h2>
+        <label for="employeeFirstName">First Name:</label>
+        <input type="text" id="employeeFirstName" name="employeeFirstName" ng-model="basic.employee.firstName"/>
 
-      <label for="employeeLastName">Last Name:</label>
-      <input type="text" id="employeeLastName" name="employeeLastName" />
+        <label for="employeeLastName">Last Name:</label>
+        <input type="text" id="employeeLastName" name="employeeLastName" ng-model="basic.employee.lastName"/>
 
-      <label for="employeeIdNumber">ID Number:</label>
-      <input type="text" id="employeeIdNumber" name="employeeIdNumber" />
+        <label for="employeeIdNumber">ID Number:</label>
+        <input type="text" id="employeeIdNumber" name="employeeIdNumber" ng-model="basic.employee.idNumber"/>
 
-      <label for="employeeJobTitle">Job Title:</label>
-      <input type="text" id="employeeJobTitle" name="employeeJobTitle" />
+        <label for="employeeJobTitle">Job Title:</label>
+        <input type="text" id="employeeJobTitle" name="employeeJobTitle" ng-model="basic.employee.jobTitle"/>
 
-      <label for="employeeAnnualSalary">Annual Salary:</label>
-      <input type="text" id="employeeAnnualSalary" name="employeeAnnualSalary" />
+        <label for="employeeAnnualSalary">Annual Salary:</label>
+        <input type="text" id="employeeAnnualSalary" name="employeeAnnualSalary" ng-model="basic.employee.annualSalary"/>
 
-      <button type="submit">Submit</button>
-    </form>
-    <div id="employeeData">
-      <h2>Employee List</h2>
-      <table class="table" style="width:100%">
+        <button type="submit" ng-click="basic.createEmployee()">Submit</button>
+      </form>
+      <div id="employeeData">
+        <h2>Employee List</h2>
+        <table class="table" style="width:100%">
           <tr>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>ID</th>
-          <th>Job Title</th>
-          <th>Annual Salary</th>
-        </tr>
-      </table>
-    </div>
-    <div id="monthSal">
-      <h2>Monthly Salary Expenditures:</h2>
-      <p id="monthlyExpend">0</p>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>ID</th>
+            <th>Job Title</th>
+            <th>Annual Salary</th>
+          </tr>
+          <tr ng-repeat="employee in basic.employees">
+            <td>{{employee.firstName}}</td>
+            <td>{{employee.lastName}}</td>
+            <td>{{employee.idNumber}}</td>
+            <td>{{employee.jobTitle}}</td>
+            <td data-salary="employee.annualSalary">{{employee.annualSalary}}</td>
+            <td><button type="button" class="btnDelete" ng-click="basic.deleteEmployee(employee)">Delete</button></td>
+          </tr>
+        </table>
       </div>
-    </section>
+      <div id="monthSal">
+        <h2>Monthly Salary Expenditures:</h2>
+        <p id="monthlyExpend">0</p>
+        </div>
+      </section>
+    </main>
   </body>
 </html>
