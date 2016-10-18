@@ -5,39 +5,33 @@ app.controller('BasicController', function (){
 
   var self = this;
   self.employees = [];
+  self.monthlyExpend = 0;
 
   self.createEmployee = function (){
     console.log('Submit employee', self.employee);
     self.employees.push(angular.copy(self.employee));
     //clears form
-    calculateTableSum()
+    calculateTableSum(self.employees)
     self.employee = null;
   };
 
   self.deleteEmployee = function (employee){
-    console.log('Delete employee', self.employee);
     //gets the index of the employee to be deleted
     var index = self.employees.indexOf(employee);
-    console.log('index', index);
     //removes only that employee
     self.employees.splice(index, 1);
-    calculateTableSum();
+    calculateTableSum(self.employees);
   };
+//function to get monthly expenditures
+  function calculateTableSum(){
+    var total = 0;
+    //loops through employee array and adds the monthly salaries together
+    for (var i = 0; i<self.employees.length; i++){
+      monthly = Math.round(self.employees[i].annualSalary/12);
+      total += monthly;
+    }
+    //updates the monthly expenditures
+    return self.monthlyExpend = total;
+}
 
 });
-
-//
-// function calculateTableSum(salary){
-//           var total = 0;
-//           $('.tableSal').each(function () {
-//           //loops through each employee salary
-//                 var value = $(this).text();
-//           //sets their annual salary as a value
-//                 total += Math.round((value/12));
-//           //divides it by 12 to get the monthly cost and adds it to the total
-//             });
-//           $('#monthlyExpend').text('$' + total);
-//         //changes the total on the DOM
-//     }
-//
-// });
